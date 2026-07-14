@@ -1,3 +1,5 @@
+import mobileStore from "../assets/projects/mobile-store.png";
+import sanaa from "../assets/projects/sanaa.png";
 export const projects = [
   {
     id: 1,
@@ -7,7 +9,7 @@ export const projects = [
     description:
       "A complete e-commerce platform for buying and selling mobile phones with authentication, admin dashboard and product management.",
 
-    image: "/src/assets/projects/mobile-store.png",
+    image: mobileStore,
 
     technologies: [
       "ASP.NET Core MVC",
@@ -38,7 +40,7 @@ export const projects = [
     description:
       "A platform connecting customers with skilled workers such as electricians and plumbers.",
 
-    image: "/src/assets/projects/sanaa.png",
+    image: sanaa,
 
     technologies: [
       "React",
