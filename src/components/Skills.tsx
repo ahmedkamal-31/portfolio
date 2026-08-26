@@ -15,7 +15,7 @@ const skills = [
   },
   {
     title: "Tools",
-    items: ["Git", "GitHub", "Visual Studio", "VS Code", "Postman"],
+    items: ["Git", "GitHub", "Visual Studio", "VS Code", ],
   },
 ];
 
