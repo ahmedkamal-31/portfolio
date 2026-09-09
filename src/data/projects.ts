@@ -1,5 +1,6 @@
 import mobileStore from "../assets/projects/mobile-store.png";
 import sanaa from "../assets/projects/sanaa.png";
+import luxuryCarRental from "../assets/projects/luxury-car-rental.png";
 export const projects = [
   {
     id: 1,
@@ -60,4 +61,41 @@ export const projects = [
 
     demo: " https://sanna-project-production.up.railway.app",
   },
+
+{
+  id: 3,
+  title: "Luxury Car Rental",
+  subtitle: "Premium Car Rental Platform",
+
+  description:
+    "A premium car rental platform for browsing luxury vehicles, viewing detailed car information, and managing rental bookings.",
+
+  image: luxuryCarRental,
+
+  technologies: [
+    "ASP.NET Core MVC",
+    "C#",
+    "Entity Framework Core",
+    "SQL Server",
+    "ASP.NET Core Identity",
+    "Html",
+     "Css",
+  ],
+
+  features: [
+    "Luxury Car Catalog",
+    "Car Details",
+    "Online Booking",
+    "User Authentication",
+    "Admin Dashboard",
+    "Car Management",
+    "Booking Management",
+  ],
+
+  github: "https://github.com/ahmedkamal-31/Luxury-Car-Rental",
+
+  demo: "YOUR_DEPLOYED_LINK",
+},
+
+
 ];
