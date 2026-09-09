@@ -1,6 +1,6 @@
 import mobileStore from "../assets/projects/mobile-store.png";
 import sanaa from "../assets/projects/sanaa.png";
-import luxuryCarRental from "../assets/projects/luxury-car-rental.png";
+import luxuryCarRental from "../assets/projects/luxuryCarRental.png";
 export const projects = [
   {
     id: 1,
