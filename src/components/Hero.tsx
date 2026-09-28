@@ -1,94 +1,193 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowDown } from "react-icons/fa";
 import profile from "../assets/images/profile.png";
 import { motion } from "framer-motion";
 
 function Hero() {
-
-
   return (
-    
-    <motion.section initial={{ opacity: 0, y: 80 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7 }}
-    viewport={{ once: true }}
-     className="min-h-screen py-40 bg-slate-950 text-white flex items-center">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="home"
+      className="min-h-screen bg-slate-950 text-white flex items-center relative overflow-hidden"
+    >
+      {/* Background Glow */}
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
 
-        <p className="text-blue-400 text-lg mb-3">
-          Hello, I'm
-        </p>
+      <div className="max-w-7xl mx-auto px-6 py-32 w-full relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        <h1 className="text-6xl font-extrabold mb-4">
-          Ahmed Kamal
-        </h1>
+          {/* ================= LEFT ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-blue-400 text-lg font-medium mb-3">
+              Hello, I'm
+            </p>
 
-        <h2 className="text-3xl text-slate-300 mb-6">
-          Full Stack .NET Developer
-        </h2>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
+              Ahmed Kamal
+            </h1>
 
-        <p className="max-w-2xl text-slate-400 leading-8 text-lg">
-        Information Systems student specializing in Full Stack
-         .NET development with React, ASP.NET Core and SQL Server.
-          Passionate about building scalable and user-friendly web applications.
-        </p>
-<div className="relative">
-  <div className="absolute inset-0 rounded-full bg-blue-500 blur-3xl opacity-30"></div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-slate-300 mb-6">
+              Full Stack <span className="text-blue-400">.NET</span> Developer
+            </h2>
 
-  <img
-    src={profile}
-    alt="Ahmed Kamal"
-    className="relative w-96 h-96 rounded-full object-cover border-4 border-blue-500"
-  />
-</div>
+            <p className="max-w-2xl text-slate-400 text-lg leading-8 mb-8">
+              Information Systems student specializing in Full Stack .NET
+              development with ASP.NET Core, SQL Server, and modern web
+              technologies. Passionate about building scalable and
+              user-friendly web applications.
+            </p>
 
-        <div className="flex gap-4 mt-8">
-<a
-  href="/Ahmed_Kamal_CV.pdf"
-  download
-  className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition bg-blue-600 "
->
-  Download CV
-</a>
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="bg-blue-600 px-7 py-3 rounded-lg font-medium
+                hover:bg-blue-700 hover:-translate-y-1
+                transition-all duration-300 shadow-lg shadow-blue-600/20"
+              >
+                View Projects
+              </a>
 
-        
-          <a
-    href="#projects"
-    className="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition"
->
-    View Projects
-</a>
+              <a
+                href="/Ahmed_Kamal_CV.pdf"
+                download
+                className="border border-slate-600 px-7 py-3 rounded-lg font-medium
+                hover:bg-white hover:text-slate-950
+                hover:-translate-y-1 transition-all duration-300"
+              >
+                Download CV
+              </a>
 
-          <a
-    href="#contact"
-    className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
->
-    Contact Me
-</a>
+              <a
+                href="#contact"
+                className="border border-slate-600 px-7 py-3 rounded-lg font-medium
+                hover:border-blue-400 hover:text-blue-400
+                transition-all duration-300"
+              >
+                Contact Me
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-6 mt-10">
+              <a
+                href="https://github.com/ahmedkamal-31"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="text-slate-400 hover:text-white hover:scale-110 transition-all duration-300"
+              >
+                <FaGithub size={28} />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ahmed-kamal-135b8b353/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all duration-300"
+              >
+                <FaLinkedin size={28} />
+              </a>
+
+              <a
+                href="mailto:ahmedkamal312005@gmail.com"
+                aria-label="Email"
+                className="text-slate-400 hover:text-red-400 hover:scale-110 transition-all duration-300"
+              >
+                <FaEnvelope size={28} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* ================= RIGHT ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+
+              {/* Outer Glow */}
+              <div className="absolute inset-0 rounded-full bg-blue-600/30 blur-3xl scale-110" />
+
+              {/* Image Border */}
+              <div className="relative p-2 rounded-full bg-gradient-to-br from-blue-500 via-cyan-400 to-blue-700">
+                <div className="bg-slate-950 p-2 rounded-full">
+                  <img
+                    src={profile}
+                    alt="Ahmed Kamal"
+                    className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96
+                    rounded-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -bottom-4 -left-6
+                bg-slate-900 border border-slate-700
+                px-5 py-3 rounded-xl shadow-xl"
+              >
+                <p className="text-sm text-slate-400">Specialized in</p>
+                <p className="font-semibold text-blue-400">
+                  ASP.NET Core
+                </p>
+              </motion.div>
+
+              {/* Small Tech Badge */}
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="absolute -top-4 -right-4
+                bg-slate-900 border border-slate-700
+                px-5 py-3 rounded-xl shadow-xl"
+              >
+                <p className="text-sm text-slate-400">Building with</p>
+                <p className="font-semibold text-cyan-400">
+                  C# & SQL Server
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
 
         </div>
 
-        <div className="flex gap-6 mt-10">
-        <a href="https://github.com/ahmedkamal-31" target="_blank" rel="noopener noreferrer">
-          <FaGithub size={36} className="hover:text-blue-400 hover:scale-110 transition duration-300" />
-        </a>
-
-        <a href="https://www.linkedin.com/in/ahmed-kamal-135b8b353/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin size={36} className="hover:text-blue-400 hover:scale-110 transition duration-300"/>
-        </a>
-<a href="mailto:ahmedkamal312005@gmail.com" target="_blank" rel="noopener noreferrer">
-          <FaEnvelope size={36} className="hover:text-blue-400 hover:scale-110 transition duration-300" />
-        </a>
-
-        </div>
-
+        {/* Scroll Indicator */}
+        <motion.a
+          href="#about"
+          animate={{ y: [0, 8, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2
+          text-slate-500 hover:text-blue-400 transition"
+          aria-label="Scroll to About"
+        >
+          <FaArrowDown size={20} />
+        </motion.a>
       </div>
-    </motion.section>
+    </section>
   );
-  
-
-
-
-  
 }
 
 export default Hero;

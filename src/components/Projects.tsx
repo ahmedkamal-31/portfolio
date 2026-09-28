@@ -1,116 +1,195 @@
 import { projects } from "../data/projects";
 import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+
 function Projects() {
   return (
-    <motion.section initial={{ opacity: 0, y: 80 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7 }}
-    viewport={{ once: true }}
-     id="projects" className="bg-slate-900 text-white py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <motion.section
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      id="projects"
+      className="bg-slate-900 text-white py-24 px-6"
+    >
+      <div className="max-w-7xl mx-auto">
 
-        <h2 className="text-4xl font-bold text-center mb-12">
-          My Projects
-        </h2>
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <p className="text-blue-400 font-medium mb-3">
+            What I've Built
+          </p>
 
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Featured Projects
+          </h2>
+
+          <p className="text-slate-400 max-w-2xl mx-auto mt-5 leading-7">
+            A selection of full-stack web applications I've built using
+            ASP.NET Core, C#, SQL Server, and modern web technologies.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
 
-          {projects.map((project) => (
+          {projects.map((project, index) => (
 
             <motion.div
-whileHover={{
-    scale:1.05,
-    y:-8
-}}
-transition={{
-    duration:.3
-}}
-className="bg-slate-800 rounded-xl overflow-hidden shadow-lg"
-
-
-
-              key={project.title}
+              key={project.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+              }}
+              whileHover={{ y: -8 }}
+              className="group bg-slate-800/80 border border-slate-700/60
+              rounded-2xl overflow-hidden shadow-xl
+              hover:border-blue-500/50 hover:shadow-blue-500/10
+              transition-all duration-300"
             >
 
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-60 object-cover"
-              />
+              {/* ================= IMAGE ================= */}
+              <div className="relative overflow-hidden">
 
-              <div className="p-6">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-64 object-cover
+                  group-hover:scale-105 transition-transform duration-500"
+                />
 
-                <h3 className="text-2xl font-bold">
-                  {project.title}
-                </h3>
+                {/* Image Overlay */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t
+                  from-slate-900/80 via-transparent to-transparent
+                  opacity-70"
+                />
 
-                <p className="text-slate-400 mt-3">
+                {/* Project Number */}
+                <div
+                  className="absolute top-4 left-4
+                  bg-slate-950/80 backdrop-blur-sm
+                  border border-slate-700
+                  px-3 py-1 rounded-full
+                  text-sm text-slate-300"
+                >
+                  0{index + 1}
+                </div>
+
+              </div>
+
+              {/* ================= CONTENT ================= */}
+              <div className="p-7">
+
+                {/* Title */}
+                <div className="mb-5">
+
+                  <h3 className="text-2xl font-bold mb-1">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-blue-400 text-sm font-medium">
+                    {project.subtitle}
+                  </p>
+
+                </div>
+
+                {/* Description */}
+                <p className="text-slate-400 leading-7">
                   {project.description}
                 </p>
 
-              <div className="mt-5">
+                {/* Features */}
+                <div className="mt-7">
 
-    <h4 className="font-semibold mb-3">
-        Key Features
-    </h4>
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3">
+                    Key Features
+                  </h4>
 
-    <ul className="space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
-        {project.features.map((feature) => (
+                    {project.features.map((feature) => (
 
-            <li
-                key={feature}
-                className="text-slate-300"
-            >
-                ✔ {feature}
-            </li>
+                      <div
+                        key={feature}
+                        className="flex items-center gap-2
+                        text-slate-400 text-sm"
+                      >
+                        <span className="text-blue-400">
+                          ✓
+                        </span>
 
-        ))}
+                        {feature}
+                      </div>
 
-    </ul>
+                    ))}
 
-</div>
+                  </div>
 
-               <div className="flex flex-wrap gap-2 mt-6">
+                </div>
 
-    {project.technologies.map((tech)=>(
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mt-7">
 
-        <span
-            key={tech}
-            className="bg-blue-600/20 text-blue-400 px-3 py-2 rounded-full"
-        >
-            {tech}
-        </span>
+                  {project.technologies.map((tech) => (
 
-    ))}
+                    <span
+                      key={tech}
+                      className="text-xs font-medium
+                      bg-blue-500/10
+                      border border-blue-500/20
+                      text-blue-400
+                      px-3 py-1.5 rounded-full"
+                    >
+                      {tech}
+                    </span>
 
-</div>
+                  ))}
 
-               <div className="flex gap-4 mt-8">
+                </div>
 
-<a
-href={project.github}
+                {/* Buttons */}
+                <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-slate-700">
 
-target="_blank"
-className="bg-blue-600 hover:bg-blue-700 transition px-5 py-2 rounded-lg "
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2
+                    bg-blue-600
+                    hover:bg-blue-700
+                    px-5 py-2.5
+                    rounded-lg
+                    font-medium
+                    transition-all duration-300
+                    hover:-translate-y-0.5"
+                  >
+                    <FaGithub />
+                    GitHub
+                  </a>
 
->
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2
+                    border border-slate-600
+                    hover:border-blue-400
+                    hover:text-blue-400
+                    px-5 py-2.5
+                    rounded-lg
+                    font-medium
+                    transition-all duration-300
+                    hover:-translate-y-0.5"
+                  >
+                    <FaExternalLinkAlt size={14} />
+                    Live Demo
+                  </a>
 
-GitHub
-
-</a>
-
-<a
-href={project.demo}
-target="_blank"
-className="border border-white px-5 py-2 rounded-lg hover:bg-white hover:text-black transition"
->
-
-Live Demo
-
-</a>
-
-</div>
+                </div>
 
               </div>
 
@@ -126,5 +205,3 @@ Live Demo
 }
 
 export default Projects;
-
- 800

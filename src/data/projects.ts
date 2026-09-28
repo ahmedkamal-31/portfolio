@@ -1,8 +1,45 @@
+import luxuryCarRental from "../assets/projects/luxuryCarRental.png";
 import mobileStore from "../assets/projects/mobile-store.png";
 import sanaa from "../assets/projects/sanaa.png";
-import luxuryCarRental from "../assets/projects/luxuryCarRental.png";
 export const projects = [
-  {
+  
+{
+  id: 3,
+  title: "Luxury Car Rental",
+  subtitle: "Premium Car Rental Platform",
+
+  description:
+    "A premium car rental platform for browsing luxury vehicles, viewing detailed car information, and managing rental bookings.",
+
+  image: luxuryCarRental,
+
+  technologies: [
+    "ASP.NET Core MVC",
+    "C#",
+    "Entity Framework Core",
+    "SQL Server",
+    "ASP.NET Core Identity",
+    "HTML",
+    "CSS",
+  ],
+
+  features: [
+    "Luxury Car Catalog",
+    "Car Details",
+    "Online Booking",
+    "User Authentication",
+    "Admin Dashboard",
+    "Car Management",
+    "Booking Management",
+  ],
+
+  github: "https://github.com/ahmedkamal-31/Luxury-Car-Rental",
+
+  demo: "http://luxury-car-rental.runasp.net/",
+},
+
+
+{
     id: 1,
     title: "Mobile Store",
     subtitle: "Full Stack E-Commerce Website",
@@ -33,7 +70,8 @@ export const projects = [
     demo: "http://mobile-store.somee.com/",
   },
 
-  {
+  
+ {
     id: 2,
     title: "Sanaa",
     subtitle: "Craftsmen Booking Platform",
@@ -59,43 +97,6 @@ export const projects = [
 
     github: "https://github.com/ahmedkamal-31/Sanna-project",
 
-    demo: " https://sanna-project-production.up.railway.app",
+    demo: "https://sanna-project-production.up.railway.app",
   },
-
-{
-  id: 3,
-  title: "Luxury Car Rental",
-  subtitle: "Premium Car Rental Platform",
-
-  description:
-    "A premium car rental platform for browsing luxury vehicles, viewing detailed car information, and managing rental bookings.",
-
-  image: luxuryCarRental,
-
-  technologies: [
-    "ASP.NET Core MVC",
-    "C#",
-    "Entity Framework Core",
-    "SQL Server",
-    "ASP.NET Core Identity",
-    "Html",
-     "Css",
-  ],
-
-  features: [
-    "Luxury Car Catalog",
-    "Car Details",
-    "Online Booking",
-    "User Authentication",
-    "Admin Dashboard",
-    "Car Management",
-    "Booking Management",
-  ],
-
-  github: "https://github.com/ahmedkamal-31/Luxury-Car-Rental",
-
-  demo: "YOUR_DEPLOYED_LINK",
-},
-
-
 ];
