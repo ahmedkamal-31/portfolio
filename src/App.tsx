@@ -1,45 +1,44 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
+import TechStack from "./components/TechStack";
+import GitHub from "./components/GitHub";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
 import Loading from "./components/Loading";
-import GitHub from "./components/GitHub";
-//import TechStack from "./components/TechStack";
-
-
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
-        setLoading(false);
+      setLoading(false);
     }, 1500);
 
     return () => clearTimeout(timer);
-}, []);
+  }, []);
 
-if (loading) {
+  if (loading) {
     return <Loading />;
-}
+  }
 
   return (
-    
     <>
       <Navbar />
-      <Hero />
-      <About />
-      
-      <TechStack />
-      <Projects />
-      <GitHub />
-      <Contact />
+
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <TechStack />
+        <GitHub />
+        <Contact />
+      </main>
+
       <Footer />
-      
     </>
   );
 }
