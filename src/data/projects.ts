@@ -1,5 +1,6 @@
 import furnicraft from "../assets/projects/furnicraft.png";
 import luxuryCarRental from "../assets/projects/luxuryCarRental.png";
+import devScope from "../assets/projects/devscope.png";
 import mobileStore from "../assets/projects/mobile-store.png";
 import sanaa from "../assets/projects/sanaa.png";
 
@@ -73,9 +74,42 @@ export const projects = [
 
     demo: "http://luxury-car-rental.runasp.net/",
   },
-
+  
   {
     id: 3,
+    title: "DevScope",
+    subtitle: "GitHub Developer Analytics Platform",
+
+    description:
+      "A full-stack analytics platform that helps developers explore their GitHub profiles, analyze repository statistics, and visualize programming language usage through an interactive dashboard.",
+
+    image: devScope,
+
+    technologies: [
+      "ASP.NET Core Web API",
+      "C#",
+      "React",
+      "TypeScript",
+      "GitHub OAuth 2.0",
+      "REST API",
+    ],
+
+    features: [
+      "GitHub OAuth Login",
+      "Developer Statistics",
+      "Repository Explorer",
+      "Repository Search & Filtering",
+      "Language Analytics",
+      "Interactive Charts",
+    ],
+
+    github: "https://github.com/ahmedkamal-31/DevScope",
+
+    demo: "https://dev-scope-nu.vercel.app/",
+  },
+
+  {
+    id: 4,
     title: "Mobile Store",
     subtitle: "Full Stack E-Commerce Website",
 
@@ -106,7 +140,7 @@ export const projects = [
   },
 
   {
-    id: 4,
+    id: 5,
     title: "Sanaa",
     subtitle: "Craftsmen Booking Platform",
 
