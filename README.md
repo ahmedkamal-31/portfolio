@@ -9,7 +9,7 @@ https://portfolio-kappa-lake-83.vercel.app/
 
 ## 📸 Preview
 
-<img width="1920" height="935" alt="screenshot-2026-11-09-152451" src="https://github.com/user-attachments/assets/45ec1cd5-c5f0-47de-88e3-2cfbe9cc424b" />
+<img width="1891" height="935" alt="screenshot-2026-11-09-152451" src="https://github.com/user-attachments/assets/192bfe4a-df0b-4d0f-a7fc-39ba75899db9" />
 
 
 > A responsive portfolio designed for desktop, tablet, and mobile devices.
