@@ -146,27 +146,27 @@ function TechStack() {
     <section
       id="tech"
       aria-label="Technical Skills and Stack"
-      className="py-24 md:py-32 bg-slate-900/60 border-t border-b border-slate-800/80 relative"
+      className="py-14 sm:py-20 md:py-28 lg:py-32 bg-slate-900/60 border-t border-b border-slate-800/80 relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <p className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3 font-semibold">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 md:mb-20">
+          <p className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-2 sm:mb-3 font-semibold">
             Technical Stack
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             My <span className="text-gradient-primary">Tech Stack</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-300 leading-relaxed">
             Technologies, frameworks, programming languages, and tools I use to build modern web applications.
           </p>
         </div>
 
         {/* ================= CORE .NET PILLARS (STRONGEST EMPHASIS) ================= */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="mb-10 sm:mb-16">
+          <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
               Core .NET Pillars
             </h3>
             <span className="text-xs font-mono text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20">
@@ -174,7 +174,7 @@ function TechStack() {
             </span>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {corePillars.map((pillar, idx) => (
               <motion.div
                 key={pillar.name}
@@ -183,10 +183,10 @@ function TechStack() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={shouldReduceMotion ? {} : { y: -5 }}
-                className={`group relative bg-gradient-to-b ${pillar.glow} border ${pillar.border} rounded-2xl p-6 shadow-xl transition-all duration-300 flex flex-col justify-between`}
+                className={`group relative bg-gradient-to-b ${pillar.glow} border ${pillar.border} rounded-2xl p-4 sm:p-6 shadow-xl transition-all duration-300 flex flex-col justify-between`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <div className={`${pillar.color} transition-transform duration-300 group-hover:scale-110 flex items-center justify-center`}>
                       {pillar.icon}
                     </div>
@@ -195,7 +195,7 @@ function TechStack() {
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2 group-hover:text-blue-300 transition-colors">
                     {pillar.name}
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
@@ -208,7 +208,7 @@ function TechStack() {
         </div>
 
         {/* ================= CATEGORIES STACK ================= */}
-        <div className="space-y-10 sm:space-y-12">
+        <div className="space-y-6 sm:space-y-10 sm:space-y-12">
           {categories.map((category) => (
             <motion.div
               key={category.title}
@@ -216,21 +216,21 @@ function TechStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className={`rounded-2xl p-6 sm:p-8 transition-all duration-300 ${
+              className={`rounded-2xl p-4 sm:p-6 lg:p-8 transition-all duration-300 ${
                 category.isPrimary
                   ? "bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950/30 border-2 border-blue-500/40 shadow-xl shadow-blue-950/20 ring-1 ring-blue-500/20"
                   : "bg-slate-950/70 border border-slate-800/80 shadow-lg shadow-black/20"
               }`}
             >
               {/* Category Subheader */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 mb-6 border-b border-slate-800/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 sm:mb-6 border-b border-slate-800/80">
                 <div>
-                  <div className="flex items-center gap-3">
-                    <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <h4 className="text-base sm:text-xl font-bold text-white tracking-tight">
                       {category.title}
                     </h4>
                     <span
-                      className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full border ${
+                      className={`text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-full border ${
                         category.isPrimary
                           ? "bg-blue-500/15 text-blue-400 border-blue-500/30 font-semibold"
                           : "bg-slate-900 text-slate-300 border border-slate-800 font-medium"
@@ -246,12 +246,12 @@ function TechStack() {
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4">
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
                     aria-label={skill.note ? `${skill.name} (${skill.note})` : skill.name}
-                    className={`group bg-slate-900/90 border border-slate-800/80 rounded-xl p-4 flex flex-col items-center justify-center gap-2.5 text-center transition-all duration-200 hover:-translate-y-1 hover:bg-slate-850 hover:shadow-lg ${skill.color}`}
+                    className={`group bg-slate-900/90 border border-slate-800/80 rounded-xl p-3 sm:p-4 min-h-[76px] sm:min-h-[84px] flex flex-col items-center justify-center gap-2 text-center transition-all duration-200 hover:-translate-y-1 hover:bg-slate-850 hover:shadow-lg ${skill.color}`}
                   >
                     <div className="text-slate-400 transition-colors duration-200 flex items-center justify-center">
                       {skill.icon}
@@ -279,16 +279,16 @@ function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-16 bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-950 border border-blue-500/30 rounded-2xl p-8 sm:p-10 text-center relative overflow-hidden"
+          className="mt-10 sm:mt-16 bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-950 border border-blue-500/30 rounded-2xl p-6 sm:p-10 text-center relative overflow-hidden"
         >
           <div className="max-w-2xl mx-auto">
             <span className="text-xs font-mono uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20 font-semibold">
               Main Development Focus
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mt-4 mb-3">
+            <h3 className="text-xl sm:text-3xl font-bold text-white mt-3 sm:mt-4 mb-2 sm:mb-3">
               Full Stack <span className="text-blue-400">.NET</span> Development
             </h3>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-xs sm:text-base leading-relaxed">
               Building full-stack web applications using C#, ASP.NET Core, Entity Framework Core, SQL Server, and modern web technologies.
             </p>
           </div>

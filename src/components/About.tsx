@@ -58,64 +58,64 @@ function About() {
     <section
       id="about"
       aria-label="About Ahmed Kamal Mohamed"
-      className="py-24 md:py-32 bg-slate-900/60 border-t border-b border-slate-800/80 relative"
+      className="py-14 sm:py-20 md:py-28 lg:py-32 bg-slate-900/60 border-t border-b border-slate-800/80 relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <p className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3 font-semibold">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 md:mb-20">
+          <p className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-2 sm:mb-3 font-semibold">
             Get To Know Me
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             About <span className="text-gradient-primary">Me</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-300 leading-relaxed">
             A brief look at my background, development journey, and what I'm working towards.
           </p>
         </div>
 
         {/* Content Layout: 2 Columns */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
           {/* Left: Personal Journey Narrative (Faithful to CV) */}
           <motion.div
             initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-4 sm:space-y-6"
           >
             <div className="inline-block px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 font-semibold">
               My Journey
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+            <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
               Building ideas into{" "}
               <span className="text-blue-400">real applications</span>.
             </h3>
 
-            <p className="text-slate-300 leading-relaxed text-base sm:text-[17px]">
+            <p className="text-slate-300 leading-relaxed text-sm sm:text-[17px]">
               I'm <strong className="text-white font-semibold">Ahmed Kamal Mohamed</strong>, a student at the
               Faculty of Computers and Information, Assiut University, currently entering my fourth year.
             </p>
 
-            <p className="text-slate-300 leading-relaxed text-base sm:text-[17px]">
+            <p className="text-slate-300 leading-relaxed text-sm sm:text-[17px]">
               My main focus is <strong className="text-white font-semibold">Full Stack .NET development</strong>. I have hands-on experience developing web applications using C#, ASP.NET Core MVC, Entity Framework Core, SQL Server, and ASP.NET Core Identity. Recently, I expanded into RESTful API development through DevScope, a full-stack GitHub analytics platform built with ASP.NET Core Web API and React.
             </p>
 
-            <p className="text-slate-300 leading-relaxed text-base sm:text-[17px]">
+            <p className="text-slate-300 leading-relaxed text-sm sm:text-[17px]">
               I am seeking an <strong className="text-white font-semibold">Internship or Junior .NET Developer opportunity</strong> to apply my technical skills, contribute to real-world projects, and continue growing as a software developer alongside experienced engineering teams.
             </p>
 
             {/* Core Focus Areas Checklist */}
-            <div className="pt-3">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3.5 font-semibold">
+            <div className="pt-2 sm:pt-3">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 font-semibold">
                 Core Competencies
               </h4>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {competencies.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-2.5 text-sm text-slate-200 bg-slate-950/70 border border-slate-800/90 px-3.5 py-2.5 rounded-lg shadow-sm"
+                    className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-200 bg-slate-950/70 border border-slate-800/90 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg shadow-sm"
                   >
                     <span className="flex-shrink-0 w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[10px]">
                       <FaCheck />
@@ -128,7 +128,7 @@ function About() {
           </motion.div>
 
           {/* Right: 4 Visual Structured Highlight Cards */}
-          <div className="lg:col-span-6 grid sm:grid-cols-2 gap-5 sm:gap-6">
+          <div className="lg:col-span-6 grid sm:grid-cols-2 gap-4 sm:gap-6">
             {highlights.map((card, idx) => (
               <motion.div
                 key={card.title}
@@ -137,25 +137,25 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={shouldReduceMotion ? {} : { y: -4 }}
-                className="group relative bg-slate-950 border border-slate-800/90 rounded-2xl p-6 sm:p-7 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between shadow-xl shadow-black/30"
+                className="group relative bg-slate-950 border border-slate-800/90 rounded-2xl p-4 sm:p-6 lg:p-7 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between shadow-xl shadow-black/30"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                       {card.icon}
                     </div>
-                    <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 font-medium">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 sm:py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 font-medium">
                       {card.badge}
                     </span>
                   </div>
 
-                  <h4 className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                  <h4 className="text-base sm:text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
                     {card.title}
                   </h4>
-                  <p className="text-xs font-mono text-blue-400/90 mb-3">
+                  <p className="text-xs font-mono text-blue-400/90 mb-2 sm:mb-3">
                     {card.subtitle}
                   </p>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                     {card.detail}
                   </p>
                 </div>
