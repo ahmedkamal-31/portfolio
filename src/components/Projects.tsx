@@ -1,206 +1,212 @@
-import { projects } from "../data/projects";
-import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaCheck, FaLayerGroup, FaStar } from "react-icons/fa";
+import { projects, type Project } from "../data/projects";
 
 function Projects() {
+  const shouldReduceMotion = useReducedMotion();
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
+
+  const filterCategories = ["All", "ASP.NET Core Web API + React", "Full Stack ASP.NET Core MVC"];
+
+  const filteredProjects = selectedFilter === "All"
+    ? projects
+    : projects.filter((p) => p.category.includes(selectedFilter) || (selectedFilter.includes("MVC") && p.category.includes("MVC")));
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
+    <section
       id="projects"
-      className="bg-slate-900 text-white py-24 px-6"
+      aria-label="Featured Projects"
+      className="py-24 md:py-32 bg-slate-950 relative"
     >
-      <div className="max-w-7xl mx-auto">
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-blue-400 font-medium mb-3">
-            What I've Built
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Featured Projects
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 mb-3">
+            <FaLayerGroup size={11} />
+            <span>Portfolio Showcase</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            Featured <span className="text-gradient-primary">Projects</span>
           </h2>
-
-          <p className="text-slate-400 max-w-2xl mx-auto mt-5 leading-7">
-            A selection of full-stack web applications I've built using
-            ASP.NET Core, C#, SQL Server, and modern web technologies.
+          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+            Real-world full-stack web applications and architectures engineered with ASP.NET Core, C#, SQL Server, and modern web technologies.
           </p>
+
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {filterCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedFilter(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  selectedFilter === cat
+                    ? "bg-blue-600 text-white shadow-sm shadow-blue-500/30"
+                    : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-start">
+          {filteredProjects.map((project: Project, index: number) => {
+            const isDevScope = project.title === "DevScope";
+            const isSanaa = project.title === "Sanaa";
 
-          {projects.map((project, index) => (
+            return (
+              <motion.article
+                key={project.id}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={shouldReduceMotion ? {} : { y: -6 }}
+                className={`group rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col justify-between ${
+                  isSanaa ? "md:col-span-2 md:max-w-xl md:mx-auto w-full" : "w-full"
+                } ${
+                  isDevScope
+                    ? "bg-slate-900 border-2 border-blue-500/70 shadow-2xl shadow-blue-950/40 ring-1 ring-blue-500/30"
+                    : "bg-slate-900/70 border border-slate-800/90 hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-950/20"
+                }`}
+              >
+                <div>
+                  {/* Visual Image Container with 16:10 aspect ratio */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-950 border-b border-slate-800/80">
+                    <img
+                      src={project.image}
+                      alt={`Screenshot of ${project.title} - ${project.subtitle}`}
+                      width={1280}
+                      height={800}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
 
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-              }}
-              whileHover={{ y: -8 }}
-              className="group bg-slate-800/80 border border-slate-700/60
-              rounded-2xl overflow-hidden shadow-xl
-              hover:border-blue-500/50 hover:shadow-blue-500/10
-              transition-all duration-300"
-            >
+                    {/* Gradient Vignette */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80"
+                    />
 
-              {/* ================= IMAGE ================= */}
-              <div className="relative overflow-hidden">
-
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover
-                  group-hover:scale-105 transition-transform duration-500"
-                />
-
-                {/* Image Overlay */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-t
-                  from-slate-900/80 via-transparent to-transparent
-                  opacity-70"
-                />
-
-                {/* Project Number */}
-                <div
-                  className="absolute top-4 left-4
-                  bg-slate-950/80 backdrop-blur-sm
-                  border border-slate-700
-                  px-3 py-1 rounded-full
-                  text-sm text-slate-300"
-                >
-                  0{index + 1}
-                </div>
-
-              </div>
-
-              {/* ================= CONTENT ================= */}
-              <div className="p-7">
-
-                {/* Title */}
-                <div className="mb-5">
-
-                  <h3 className="text-2xl font-bold mb-1">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-blue-400 text-sm font-medium">
-                    {project.subtitle}
-                  </p>
-
-                </div>
-
-                {/* Description */}
-                <p className="text-slate-400 leading-7">
-                  {project.description}
-                </p>
-
-                {/* Features */}
-                <div className="mt-7">
-
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3">
-                    Key Features
-                  </h4>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-                    {project.features.map((feature) => (
-
-                      <div
-                        key={feature}
-                        className="flex items-center gap-2
-                        text-slate-400 text-sm"
-                      >
-                        <span className="text-blue-400">
-                          ✓
+                    {/* Index and Category Badges */}
+                    <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex items-start justify-between gap-2 pointer-events-none">
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span className="font-mono text-xs font-bold text-slate-200 bg-slate-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700/80">
+                          0{index + 1}
                         </span>
 
-                        {feature}
+                        {isDevScope && (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-blue-600 text-white shadow-md shadow-blue-600/40 border border-blue-400/40">
+                            <FaStar size={10} className="text-amber-300" />
+                            <span>Featured</span>
+                          </span>
+                        )}
                       </div>
 
-                    ))}
-
+                      <span className="text-[10px] sm:text-[11px] font-mono text-blue-300 bg-blue-950/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-blue-500/30 truncate max-w-[55%] sm:max-w-none">
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
 
+                  {/* Content Section */}
+                  <div className="p-6 sm:p-7">
+                    <div className="mb-4">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                          {project.title}
+                        </h3>
+                        {isDevScope && (
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                            Flagship
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs font-mono text-slate-400 mt-1">
+                        {project.subtitle}
+                      </p>
+                    </div>
+
+                    {/* High-Readability Description */}
+                    <p className="text-slate-300 text-sm sm:text-base leading-relaxed sm:leading-7 mb-6 font-normal">
+                      {project.description}
+                    </p>
+
+                    {/* Key Features Grid */}
+                    <div className="mb-6 bg-slate-950/60 border border-slate-800/80 rounded-xl p-4">
+                      <h4 className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
+                        <span>Highlighted Capabilities</span>
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {project.features.map((feature) => (
+                          <div
+                            key={feature}
+                            className="flex items-center gap-2 text-xs text-slate-300"
+                          >
+                            <span className="w-3.5 h-3.5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[8px] flex-shrink-0">
+                              <FaCheck />
+                            </span>
+                            <span className="truncate">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Technologies Badges */}
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs font-mono px-2.5 py-1 rounded-md bg-slate-950 border border-slate-800 text-slate-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mt-7">
-
-                  {project.technologies.map((tech) => (
-
-                    <span
-                      key={tech}
-                      className="text-xs font-medium
-                      bg-blue-500/10
-                      border border-blue-500/20
-                      text-blue-400
-                      px-3 py-1.5 rounded-full"
-                    >
-                      {tech}
-                    </span>
-
-                  ))}
-
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-slate-700">
-
+                {/* Action Links Footer */}
+                <div className="px-5 sm:px-7 py-3.5 sm:py-4 bg-slate-950/80 border-t border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2
-                    bg-blue-600
-                    hover:bg-blue-700
-                    px-5 py-2.5
-                    rounded-lg
-                    font-medium
-                    transition-all duration-300
-                    hover:-translate-y-0.5"
+                    className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-600 text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                      isSanaa ? "w-full" : "flex-1 sm:flex-initial"
+                    }`}
                   >
-                    <FaGithub />
-                    GitHub
+                    <FaGithub size={15} />
+                    <span>View Repository</span>
                   </a>
 
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2
-                    border border-slate-600
-                    hover:border-blue-400
-                    hover:text-blue-400
-                    px-5 py-2.5
-                    rounded-lg
-                    font-medium
-                    transition-all duration-300
-                    hover:-translate-y-0.5"
-                  >
-                    <FaExternalLinkAlt size={14} />
-                    Live Demo
-                  </a>
-
+                  {/* For Sanaa ONLY, remove the Live Demo button completely */}
+                  {!isSanaa && project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-md shadow-blue-600/20 hover:shadow-blue-600/30 flex-1 sm:flex-initial"
+                    >
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                      </span>
+                      <span>Live Demo</span>
+                      <FaExternalLinkAlt size={11} />
+                    </a>
+                  )}
                 </div>
-
-              </div>
-
-            </motion.div>
-
-          ))}
-
+              </motion.article>
+            );
+          })}
         </div>
-
       </div>
-    </motion.section>
+    </section>
   );
 }
 

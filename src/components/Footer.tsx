@@ -1,97 +1,99 @@
-import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function Footer() {
-  const currentYear = new Date().getFullYear();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Tech Stack", href: "#tech" },
+    { name: "GitHub", href: "#github" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-      className="bg-slate-950 text-slate-400 border-t border-slate-800"
-    >
-      <div className="max-w-7xl mx-auto px-6 py-12">
-
-        {/* Top */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-
-          {/* Logo / Description */}
+    <footer className="bg-slate-950 border-t border-slate-800/80 text-slate-400 py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-slate-800/80">
+          {/* Brand Info */}
           <div className="text-center md:text-left">
             <a
               href="#home"
-              className="text-2xl font-bold text-blue-400"
+              className="inline-flex items-center gap-2 text-xl font-bold text-white tracking-tight group"
             >
-              Ahmed Kamal
+              <span className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-mono text-xs">
+                AK
+              </span>
+              <span>Ahmed Kamal</span>
             </a>
-
-            <p className="mt-3 text-sm text-slate-500 max-w-md">
-              Full Stack .NET Developer focused on building modern,
-              scalable, and user-friendly web applications.
+            <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-md">
+              Junior .NET Developer specializing in ASP.NET Core, C#, SQL Server, and modern React.
             </p>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-5">
+          {/* Quick Nav Links */}
+          <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-slate-400 hover:text-white transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
 
+          {/* Socials & Back To Top */}
+          <div className="flex items-center gap-3">
             <a
               href="https://github.com/ahmedkamal-31"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:border-blue-500 hover:text-blue-400 hover:-translate-y-1 transition-all duration-300"
+              aria-label="GitHub Profile"
+              className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-colors"
             >
-              <FaGithub size={19} />
+              <FaGithub size={16} />
             </a>
-
             <a
               href="https://www.linkedin.com/in/ahmed-kamal-135b8b353/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:border-blue-500 hover:text-blue-400 hover:-translate-y-1 transition-all duration-300"
+              aria-label="LinkedIn Profile"
+              className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-slate-700 transition-colors"
             >
-              <FaLinkedin size={19} />
+              <FaLinkedin size={16} />
             </a>
-
             <a
               href="mailto:ahmedkamal312005@gmail.com"
-              aria-label="Email"
-              className="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:border-blue-500 hover:text-blue-400 hover:-translate-y-1 transition-all duration-300"
+              aria-label="Send Email"
+              className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-slate-700 transition-colors"
             >
-              <FaEnvelope size={19} />
+              <FaEnvelope size={16} />
             </a>
-
-            <a
-              href="#home"
-              aria-label="Back to top"
-              className="w-11 h-11 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300"
+            <button
+              onClick={scrollToTop}
+              aria-label="Scroll back to top"
+              className="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition-all cursor-pointer"
             >
-              <FaArrowUp size={16} />
-            </a>
-
+              <FaArrowUp size={14} />
+            </button>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-slate-800 my-8" />
-
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
-
-          <p>
-            © {currentYear} Ahmed Kamal. All Rights Reserved.
-          </p>
-
-          <p className="text-slate-600">
+        {/* Bottom Legal / Details */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs font-mono text-slate-300">
+          <p>© {CURRENT_YEAR} Ahmed Kamal. All rights reserved.</p>
+          <p className="text-slate-400">
             Built with React & ASP.NET Core
           </p>
-
         </div>
-
       </div>
-    </motion.footer>
+    </footer>
   );
 }
 

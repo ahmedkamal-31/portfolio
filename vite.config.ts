@@ -2,10 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     tailwindcss(),
   ],
-base: process.env.VERCEL ? '/' : '/portfolio/',
-});
+  base: command === "serve" || process.env.VERCEL ? "/" : "/portfolio/",
+}));

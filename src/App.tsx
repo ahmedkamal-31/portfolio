@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -10,28 +9,13 @@ import TechStack from "./components/TechStack";
 import GitHub from "./components/GitHub";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Loading from "./components/Loading";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <>
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-blue-600/30 selection:text-white">
       <Navbar />
 
-      <main>
+      <main id="main-content" className="flex-1">
         <Hero />
         <About />
         <Projects />
@@ -43,7 +27,7 @@ function App() {
       <Footer />
       <Analytics />
       <SpeedInsights />
-    </>
+    </div>
   );
 }
 
